@@ -1,17 +1,18 @@
 package calculator
 
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.NullAndEmptySource
 
 class StringCalculatorTest {
 
-    @Test
-    fun nullTest() {
+    @ParameterizedTest
+    @NullAndEmptySource
+    fun nullTest(input: String?) {
         val stringCalculator = StringCalculator()
-        assertThatThrownBy { stringCalculator.calculate("  ") }
+        assertThatThrownBy { stringCalculator.calculate(input) }
             .isInstanceOf(IllegalArgumentException::class.java)
     }
 
