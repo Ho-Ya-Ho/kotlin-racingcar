@@ -9,8 +9,7 @@ class Cars(private val moveStrategy: MoveStrategy = RandomStrategy(), carList: L
     var carList: List<Car> = carList
         private set
 
-    var carHisList: MutableList<Car> = mutableListOf()
-        private set
+    val carHistoryList: MutableList<Car> = mutableListOf()
 
     fun initCars(inputCars: String, delimiter: String = COMMA) {
         val split = inputCars.split(delimiter)
@@ -30,7 +29,7 @@ class Cars(private val moveStrategy: MoveStrategy = RandomStrategy(), carList: L
     }
 
     private fun saveCarLog(car: Car) {
-        carHisList.add(car)
+        carHistoryList.add(car)
     }
 
     fun getWinners(): List<Car> {
